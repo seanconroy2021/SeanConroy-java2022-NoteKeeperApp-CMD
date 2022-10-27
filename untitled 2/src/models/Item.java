@@ -15,6 +15,7 @@ public class Item {
     {
         this.itemDescription = Utilities.truncateString(itemDescription, 50);
         this.isItemCompleted = isItemCompleted;
+
     }
 
 
