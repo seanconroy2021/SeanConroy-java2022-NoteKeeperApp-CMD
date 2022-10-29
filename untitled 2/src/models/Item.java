@@ -1,7 +1,7 @@
 package models;
 
 import utils.Utilities;
-
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Item {
@@ -54,7 +54,8 @@ public class Item {
     // to string method
 
     @Override
-    public String  toString() {
+    public String  toString()
+    {
         return "Item{" +
                 "itemDescription='" + itemDescription + '\'' +
                 ", isItemCompleted=" + Utilities.StatusOfCompilation(isItemCompleted) +
@@ -62,12 +63,14 @@ public class Item {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
         return isItemCompleted == item.isItemCompleted && Objects.equals(itemDescription, item.itemDescription);
     }
+
 
 
 }

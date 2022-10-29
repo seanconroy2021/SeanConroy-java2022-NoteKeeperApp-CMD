@@ -1,6 +1,11 @@
 package utils;
 
+import models.Note;
+import models.Item;
+
 import java.lang.invoke.StringConcatFactory;
+import java.util.ArrayList;
+
 
 public class Utilities {
 
@@ -106,5 +111,7 @@ public class Utilities {
             return"[TODO]";
         }
     }
+
+
 
 }
