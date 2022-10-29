@@ -12,7 +12,7 @@ public class Note {
 
 
 private String noteTitle ="No Title";
-private int notePriority =1;
+private int notePriority = 1;
 private  String noteCategory ="";
 private boolean isNoteArchived= false;
 
@@ -23,8 +23,8 @@ private ArrayList<Item> items; //Item is the class
     public Note(String noteTitle, int notePriority, String noteCategory)
     {
             this.noteTitle =  Utilities.truncateString(noteTitle, 20);
-            this.notePriority= notePriority;
-            this.noteCategory = noteCategory;
+            if (Utilities.validRange(notePriority,1,5)) { this.notePriority =notePriority;}
+            if (CategoryUtility.isValidCategory(noteCategory) == true) {this.noteCategory = noteCategory;}
             this.isNoteArchived= isNoteArchived;
             items = new ArrayList<Item>(); // you will have a collection of items in note
 
@@ -62,7 +62,11 @@ private ArrayList<Item> items; //Item is the class
     }
 
     public void setNotePriority(int notePriority) {
-        this.notePriority = notePriority;
+      if (Utilities.validRange(notePriority,1,5))
+      {
+          this.notePriority =notePriority;
+      }
+
     }
 
     public void setNoteCategory(String noteCategory) {
