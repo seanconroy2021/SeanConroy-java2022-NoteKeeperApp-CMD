@@ -1,5 +1,8 @@
 package models;
 
+import utils.CategoryUtility;
+import utils.Utilities;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -19,7 +22,7 @@ private ArrayList<Item> items; //Item is the class
     //constructor
     public Note(String noteTitle, int notePriority, String noteCategory)
     {
-            this.noteTitle = noteTitle;
+            this.noteTitle =  Utilities.truncateString(noteTitle, 20);
             this.notePriority= notePriority;
             this.noteCategory = noteCategory;
             this.isNoteArchived= isNoteArchived;
@@ -54,7 +57,8 @@ private ArrayList<Item> items; //Item is the class
 
 
     public void setNoteTitle(String noteTitle) {
-        this.noteTitle = noteTitle;
+        if ( Utilities.validateStringLength(noteTitle,20) == true ) {this.noteTitle=noteTitle;}
+
     }
 
     public void setNotePriority(int notePriority) {
@@ -62,7 +66,10 @@ private ArrayList<Item> items; //Item is the class
     }
 
     public void setNoteCategory(String noteCategory) {
-        this.noteCategory = noteCategory;
+
+        if (CategoryUtility.isValidCategory(noteCategory) == true) {
+            this.noteCategory = noteCategory;
+        }
     }
 
     public void setNoteArchived(boolean noteArchived) {
@@ -134,8 +141,12 @@ private ArrayList<Item> items; //Item is the class
 
     public boolean updateItem (int index, String itemDescription, boolean itemCompleted)
     {
-        // find the item object by the associated index number.
-        Item foundItem = items.get(index);
+
+        Item foundItem = null;
+        if (isValidIndex(index))
+        {
+            foundItem = items.get(index); // find the item object by the associated index number.
+        }
 
         if(foundItem != null)
         {
@@ -155,9 +166,13 @@ private ArrayList<Item> items; //Item is the class
         return null;
     }
 
-    public Item findItem(int index)//notDone
+    public Item findItem(int index)
     {
-        return null;
+        if(isValidIndex(index))
+        {
+            return items.get(index);
+        }
+         return null;
     }
 
 
@@ -166,9 +181,32 @@ private ArrayList<Item> items; //Item is the class
         return items.size();
     }
 
+    /**
+     * This method look at the compleation status for each in the arrayList
+     *
+     * @return If their is no items in the arrayList it will return true,
+     * It will use for each loop and once it find one item [todo] it return false.
+     * If all items are completed it will send back true.
+     *
+     */
+
     public boolean checkNoteCompletionStatus() //notDone
     {
-        return false;
+        if (items.size() == 0)
+        {
+            return true; // if there is noting in the arrayList of item it will return false
+        }
+
+        for (Item item : items) {
+            boolean test  = item.isItemCompleted();
+            if (test == false)
+            {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     @Override
@@ -177,7 +215,7 @@ private ArrayList<Item> items; //Item is the class
                 "noteTitle='" + noteTitle + '\'' +
                 ", notePriority=" + notePriority +
                 ", noteCategory='" + noteCategory + '\'' +
-                ", isNoteArchived=" + isNoteArchived +
+                ", isNoteArchived=" + Utilities.booleanToYN(isNoteArchived) +
                 ", items=" + items +
                 '}';
     }
