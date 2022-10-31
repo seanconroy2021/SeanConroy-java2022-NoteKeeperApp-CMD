@@ -62,19 +62,11 @@ private ArrayList<Item> items; //Item is the class
     }
 
     public void setNotePriority(int notePriority) {
-      if (Utilities.validRange(notePriority,1,5))
-      {
-          this.notePriority =notePriority;
-      }
+      if (Utilities.validRange(notePriority,1,5)) {this.notePriority =notePriority;}
 
     }
 
-    public void setNoteCategory(String noteCategory) {
-
-        if (CategoryUtility.isValidCategory(noteCategory) == true) {
-            this.noteCategory = noteCategory;
-        }
-    }
+    public void setNoteCategory(String noteCategory) {if (CategoryUtility.isValidCategory(noteCategory) == true) {this.noteCategory = noteCategory;}}
 
     public void setNoteArchived(boolean noteArchived) {
         isNoteArchived = noteArchived;
@@ -108,7 +100,7 @@ private ArrayList<Item> items; //Item is the class
 
     /** addItem object, passed as a parameter, to the arraylist.
      *
-     * @param item model.Item object to be added to the arraylist.
+     * @param item model.Item object to be xadded to the arraylist.
      * @return a boolean indicating success / failure of the add.
      */
     public boolean addItem (Item item)
@@ -175,9 +167,11 @@ private ArrayList<Item> items; //Item is the class
         if(isValidIndex(index))
         {
             return items.get(index);
+
         }
          return null;
     }
+
 
 
     public int  numberOfItems()
@@ -212,6 +206,9 @@ private ArrayList<Item> items; //Item is the class
 
         return true;
     }
+
+
+
 
     @Override
     public String toString() { // notDone
