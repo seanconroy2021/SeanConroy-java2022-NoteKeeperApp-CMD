@@ -48,27 +48,83 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_directory_selection": "/Users/seanconroy/Library/CloudStorage/OneDrive-WaterfordInstituteofTechnology/year of colege/Year 2/Semster 2/PROGRAMMING/assingment1/seanconroy2021-Assingment01JAVA-2022-II/untitled 2/src/controllers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.NoteTest">
-    <configuration name="NoteTest$GettersAndSetters.noteTitleGetAndSetWorkingCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.NoteAPITest">
+    <configuration name="NoteAPITest$ArrayListCRUD.archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="models.*" />
+          <option name="PATTERN" value="controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="models.NoteTest" />
-      <option name="MAIN_CLASS_NAME" value="models.NoteTest$GettersAndSetters" />
-      <option name="METHOD_NAME" value="noteTitleGetAndSetWorkingCorrectly" />
+      <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ArrayListCRUD" />
+      <option name="METHOD_NAME" value="archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteAPITest$ListingMethods.listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
+      <option name="METHOD_NAME" value="listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteAPITest$ListingMethods.listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
+      <option name="METHOD_NAME" value="listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteAPITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,25 +144,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="models in seanconroy2021-Assingment01JAVA-2022-II" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NoteAPITest" />
         <item itemvalue="JUnit.NoteTest" />
-        <item itemvalue="JUnit.models in seanconroy2021-Assingment01JAVA-2022-II" />
-        <item itemvalue="JUnit.NoteTest$GettersAndSetters.noteTitleGetAndSetWorkingCorrectly" />
+        <item itemvalue="JUnit.NoteAPITest$ArrayListCRUD.archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" />
       </list>
     </recent_temporary>
   </component>
@@ -123,7 +167,7 @@
       <workItem from="1666775522544" duration="4020000" />
       <workItem from="1666862354840" duration="1596000" />
       <workItem from="1666958290220" duration="2994000" />
-      <workItem from="1667047813885" duration="34864000" />
+      <workItem from="1667047813885" duration="47246000" />
     </task>
     <servers />
   </component>

@@ -49,6 +49,7 @@ private ArrayList<Item> items; //Item is the class
         return isNoteArchived;
     }
 
+
     public ArrayList<Item> getItems() {
         return items;
     }

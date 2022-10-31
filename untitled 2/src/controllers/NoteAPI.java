@@ -13,6 +13,11 @@ public class NoteAPI {
 
     private ArrayList<Note> notes;
 
+    public NoteAPI()
+    {
+        notes = new ArrayList<Note>();
+    }
+
 
     public boolean isValidIndex(int index)
     {
@@ -24,10 +29,7 @@ public class NoteAPI {
      * @param note models.Note object to be added into the arrayList.
      * @return true if it was successful and false otherwise.
      */
-    public boolean add (Note note)
-    {
-        return notes.add(note);
-    }
+    public boolean add (Note note) {return notes.add(note);}
 
 
     public boolean updateNote(int indexToUpdate, String noteTitle, int notePriority, String noteCategory)
@@ -61,28 +63,33 @@ public class NoteAPI {
     {
 
         if (isValidIndex(indexToArchive)) {
-            Note noteFound = findNote(indexToArchive);
-            boolean isArchivedTest = noteFound.isNoteArchived();
-            if (isArchivedTest == true) {
-                return false; //If the note exists, but is already archived or items on
-                // the note are still TODO, return false.
-            } else if (isArchivedTest == false) {
-                if (noteFound.checkNoteCompletionStatus() == true) {
-                    return true;
-                }
 
+            Note noteFound = findNote(indexToArchive);
+
+            if (noteFound.isNoteArchived() == false && noteFound.checkNoteCompletionStatus() == true)
+            {
+                noteFound.setNoteArchived(true); // the note is then archived
+                return true;
+
+
+            } else if (noteFound.isNoteArchived() == true && noteFound.checkNoteCompletionStatus()==false) {
+
+                return false;
+                //If the note exists, but is already archived or items on
+                // the note are still TODO, return false.
             }
 
         }
 
-        return false;
+
+        return false; // if the note index is invalid it send false
 
     }
 
     public String archiveNotesWithAllItemsComplete()
     {
         String newlyArchived="";
-        if(notes.isEmpty()) // same as writing == true
+        if(notes.isEmpty()|| numberOfActiveNotes()==0) // same as writing == true
         {
             return"No active notes stored";
         }
@@ -190,7 +197,7 @@ public class NoteAPI {
     {
         int numOfItems =0;
         for (Note note : notes) {
-            if(note.checkNoteCompletionStatus())//true
+            if(note.checkNoteCompletionStatus() == true)//true
             {  numOfItems = numOfItems + note.numberOfItems();}
 
         }
@@ -199,14 +206,167 @@ public class NoteAPI {
 
     public int numberOfTodoItems()
     {
-        int numOfItems =0;
+        int numOfItems=0;
         for (Note note : notes) {
-            if(!note.checkNoteCompletionStatus())//false
+            if(note.checkNoteCompletionStatus()==false)//false
             {  numOfItems = numOfItems + note.numberOfItems();}
 
         }
         return numOfItems;
     }
+// LISTING METHODS
+
+    public String listAllNotes() {
+        if (notes.isEmpty() == true) {
+            return "No Notes Stored";
+
+        } else {
+            String listOfNotes = "";
+
+            for (int i = 0; i < notes.size(); i++) {
+                listOfNotes = listOfNotes + i + ": " + notes.get(i) + "\n";
+            }
+
+            return listOfNotes;
+        }
+    }
+
+
+    public String listActiveNotes()
+    {
+        if(numberOfActiveNotes()==0)
+        {
+            return "No active notes stored";
+        }
+
+        else
+        {
+            String listOfActNotes="";
+            for (Note note : notes)
+            {
+                if(!note.isNoteArchived())
+                {
+                    for (int i = 0; i < notes.size(); i++)
+                    {listOfActNotes= listOfActNotes + i +": "+ notes.get(i)+"\n";}
+                }
+
+            }
+
+            return listOfActNotes;
+
+        }
+    }
+
+    public String listArchivedNotes()
+    {
+        if(numberOfActiveNotes()==0)
+        {
+            return "No active notes stored";
+        }
+
+        else
+        {
+            String listOfActNotes="";
+            for (Note note : notes)
+            {
+                if(note.isNoteArchived())//true
+                {
+                    for (int i = 0; i < notes.size(); i++)
+                    {listOfActNotes= listOfActNotes + i +": "+ notes.get(i)+"\n";}
+                }
+
+            }
+
+            return listOfActNotes;
+
+        }
+    }
+
+    public String listNotesBySelectedCategory(String category)
+    {
+        if(numberOfNotes() ==0 )
+        {
+            return "No notes stored";
+        } else if (numberOfNotesByCategory(category)==0)
+        {
+            return "No notes with category";
+        }
+        else
+        {
+            String listOfNoteByCat="";
+            for (Note note : notes)
+            {
+                if(note.getNoteCategory().equalsIgnoreCase(category))//true
+                {
+                    for (int i = 0; i < notes.size(); i++)
+                    {listOfNoteByCat= listOfNoteByCat + i +": "+ notes.get(i)+"\n";}
+                }
+
+            }
+            return numberOfNotesByCategory(category)+ " notes with category "+category+"\n"+listOfNoteByCat;
+        }
+
+    }
+
+    public String listNotesBySelectedPriority(int priority)
+    {
+        if(numberOfNotes() ==0 )
+        {
+            return "No notes stored";
+        } else if (numberOfNotesByPriority(priority)==0)
+        {
+            return "No notes with priority";
+        }
+        else
+        {
+            String listOfNoteByPriority="";
+            for (Note note : notes)
+            {
+                if(note.getNotePriority()==priority)//true
+                {
+                    for (int i = 0; i < notes.size(); i++)
+                    {listOfNoteByPriority= listOfNoteByPriority + i +": "+ notes.get(i)+"\n";}
+                }
+
+            }
+            return numberOfNotesByPriority(priority)+ " notes with priority "+priority+"\n"+listOfNoteByPriority;
+        }
+
+    }
+
+    public String listTodoItems()
+    {
+        if(numberOfNotes() ==0 )
+        {
+            return "No notes stored";
+        }
+        else {
+            String toDoItemString = "";
+            for (Note note : notes) {
+                if (note.checkNoteCompletionStatus() == false && numberOfNotes() != 0) {
+                    toDoItemString = toDoItemString + note.getNoteTitle() + ":    " + note.getItems() + "\n";
+                }
+            }
+            return toDoItemString;
+        }
+    }
+
+     public String listItemStatusByCategory(String category)
+    {
+        return "notdone-test";
+    }
+
+    public String searchNotesByTitle(String searchString)
+    {
+        return "notdone-test";
+    }
+
+    public String searchItemByDescription(String searchString)
+    {
+        return "notdone-test";
+    }
+
+
 
 
 
