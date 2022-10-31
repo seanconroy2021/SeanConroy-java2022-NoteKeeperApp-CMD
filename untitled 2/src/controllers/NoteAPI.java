@@ -1,6 +1,7 @@
 package controllers;
 import models.Item;
 import models.Note;
+import utils.CategoryUtility;
 import utils.Utilities;
 
 import java.util.ArrayList;
@@ -131,7 +132,7 @@ public class NoteAPI {
         return numArchived;
     }
 
-    public int numberOfNotesByCategory(String category)
+    public int numberOfActiveNotes()
     {
         int numActive = 0;
         for(Note note:notes)
@@ -144,15 +145,73 @@ public class NoteAPI {
         return numActive;
     }
 
-    public int numberOfNotesByPriority(int priority)//notdone
-    {
-        return -999;
+
+
+    public int numberOfNotesByCategory(String category) {
+        int numNoteInCategory = 0;
+        if (CategoryUtility.isValidCategory(category)) {
+
+            for (Note note : notes) {
+                if (note.getNoteCategory().equalsIgnoreCase(category) ) //true
+                {
+                   numNoteInCategory = numNoteInCategory+1;
+
+                }
+            }
+
+        }
+        return numNoteInCategory;
     }
 
-    public int numberOfItems()//not done
+    public int numberOfNotesByPriority(int priority)//notdone
     {
-        return -999;
+        int numNoteInPriority=0;
+        for (Note note : notes) {
+            if (note.getNotePriority() == priority) //false
+            {
+                numNoteInPriority = numNoteInPriority+1;
+
+            }
+        }
+
+        return numNoteInPriority;
     }
+
+
+    public int numberOfItems()
+    {
+        int numOfItems =0;
+        for (Note note : notes) {
+            numOfItems = numOfItems + note.numberOfItems();
+        }
+        return numOfItems;
+    }
+    public int numberOfCompleteItems()
+    {
+        int numOfItems =0;
+        for (Note note : notes) {
+            if(note.checkNoteCompletionStatus())//true
+            {  numOfItems = numOfItems + note.numberOfItems();}
+
+        }
+        return numOfItems;
+    }
+
+    public int numberOfTodoItems()
+    {
+        int numOfItems =0;
+        for (Note note : notes) {
+            if(!note.checkNoteCompletionStatus())//false
+            {  numOfItems = numOfItems + note.numberOfItems();}
+
+        }
+        return numOfItems;
+    }
+
+
+
+
+
 
 
 
