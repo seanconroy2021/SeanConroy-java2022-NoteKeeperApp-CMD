@@ -49,18 +49,32 @@ public class NoteAPI {
 
     public Note deleteNote(int indexToDelete)
     {
-        if(isValidIndex(indexToDelete))
+        if(isValidIndex(indexToDelete)==true)
         {
+
+
+
             Note note = findNote(indexToDelete);
-
-
-            for (int i = 0; i < note.getItems().size(); i++)
-            {
-                note.deleteItem(i);
-            }
+            //want to delete all items in  the note object
+            note.numberOfItems();
+            note.deleteItem(indexToDelete);
 
 
             return notes.remove(indexToDelete);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
         return null;
@@ -297,7 +311,7 @@ public class NoteAPI {
                 if(note.getNoteCategory().equalsIgnoreCase(category))//true
                 {
 
-                    {listOfNoteByCat= listOfNoteByCat  +notes.indexOf(note) +": "+ note+"\n";}
+                    { listOfNoteByCat= listOfNoteByCat  +notes.indexOf(note) +": "+ note+"\n";}
                 }
 
             }
@@ -361,8 +375,39 @@ public class NoteAPI {
 
      public String listItemStatusByCategory(String category)
     {
-        return "notdone-test";
+        String toDoString="";
+        String completeString ="";
+        int numToDo =0;
+        int numComp=0;
+        if(numberOfNotes() ==0 )
+        {
+            return "No notes stored";
+        }
+        else
+        {
+            for (Note note : notes)
+            {
+                if(note.getNoteCategory().equalsIgnoreCase(category))
+                {
+                    for (int i = 0; i < note.numberOfItems(); i++) {
+                        if (note.findItem(i).isItemCompleted() == false)
+                        {
+                            numToDo +=1;
+                            toDoString += note.findItem(i)+" (Note:  "+note.getNoteTitle()+" )"+"\n";
+
+                        } else if (note.findItem(i).isItemCompleted() == true)
+                        {
+                            numComp+=1;
+                            completeString += note.findItem(i)+" (Note:  "+note.getNoteTitle()+" )"+"\n";
+                        }
+
+                    }
+                }
+            }
+        }
+        return "Number Completed: "+numComp+"\n"+completeString+"\n"+"Number TODO: "+numToDo+"\n"+toDoString;
     }
+
 
     //Finding / Searching Methods
 
@@ -422,9 +467,6 @@ public class NoteAPI {
                         }
 
                 }
-
-
-
 
             }
         }

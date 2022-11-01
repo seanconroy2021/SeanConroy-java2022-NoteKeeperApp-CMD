@@ -39,33 +39,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_directory_selection": "/Users/seanconroy/Library/CloudStorage/OneDrive-WaterfordInstituteofTechnology/year of colege/Year 2/Semster 2/PROGRAMMING/assingment1/seanconroy2021-Assingment01JAVA-2022-II/untitled 2/src/controllers",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/seanconroy/Library/CloudStorage/OneDrive-WaterfordInstituteofTechnology/year of colege/Year 2/Semster 2/PROGRAMMING/assingment1/seanconroy2021-Assingment01JAVA-2022-II/untitled 2/src/controllers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NoteAPITest$ListingMethods">
+  <component name="RunManager" selected="JUnit.NoteAPITest">
+    <configuration name="All in seanconroy2021-Assingment01JAVA-2022-II" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteAPITest$ArrayListCRUD.deletingANoteThatExistsDeletesAndReturnsDeletedObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ArrayListCRUD" />
+      <option name="METHOD_NAME" value="deletingANoteThatExistsDeletesAndReturnsDeletedObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NoteAPITest$ListingMethods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
@@ -97,41 +121,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
-      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
-      <option name="METHOD_NAME" value="listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controllers" />
-      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="controllers.NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty" />
-        <pattern testClass="controllers.NoteAPITest$ListingMethods,listAllNotesReturnsNotesWhenArrayListHasNotesStored" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NoteAPITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
@@ -149,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NoteAPITest$ListingMethods" />
         <item itemvalue="JUnit.NoteAPITest" />
+        <item itemvalue="JUnit.NoteAPITest$ArrayListCRUD.deletingANoteThatExistsDeletesAndReturnsDeletedObject" />
+        <item itemvalue="JUnit.All in seanconroy2021-Assingment01JAVA-2022-II" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods" />
         <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesByPriorityWhenNoNotesOfThatPriorityExist" />
-        <item itemvalue="JUnit.NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty and 1 more" />
-        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +159,8 @@
       <workItem from="1666775522544" duration="4020000" />
       <workItem from="1666862354840" duration="1596000" />
       <workItem from="1666958290220" duration="2994000" />
-      <workItem from="1667047813885" duration="67301000" />
+      <workItem from="1667047813885" duration="72877000" />
+      <workItem from="1667320555274" duration="11130000" />
     </task>
     <servers />
   </component>
@@ -187,5 +177,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/untitled 2/test/controllers/NoteAPITest.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
