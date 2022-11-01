@@ -65,8 +65,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NoteAPITest">
-    <configuration name="NoteAPITest$FindingSearchingMethods.searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.NoteAPITest$ListingMethods">
+    <configuration name="NoteAPITest$ListingMethods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
         <pattern>
@@ -75,9 +75,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
-      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$FindingSearchingMethods" />
-      <option name="METHOD_NAME" value="searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods" />
         <item itemvalue="JUnit.NoteAPITest" />
         <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesByPriorityWhenNoNotesOfThatPriorityExist" />
         <item itemvalue="JUnit.NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty and 1 more" />
         <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" />
-        <item itemvalue="JUnit.NoteAPITest$FindingSearchingMethods.searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +170,7 @@
       <workItem from="1666775522544" duration="4020000" />
       <workItem from="1666862354840" duration="1596000" />
       <workItem from="1666958290220" duration="2994000" />
-      <workItem from="1667047813885" duration="63953000" />
+      <workItem from="1667047813885" duration="67301000" />
     </task>
     <servers />
   </component>

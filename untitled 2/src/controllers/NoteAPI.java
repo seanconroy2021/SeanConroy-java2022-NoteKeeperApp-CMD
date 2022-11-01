@@ -2,11 +2,8 @@ package controllers;
 import models.Item;
 import models.Note;
 import utils.CategoryUtility;
-import utils.Utilities;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 
 
 public class NoteAPI {
@@ -54,7 +51,17 @@ public class NoteAPI {
     {
         if(isValidIndex(indexToDelete))
         {
+            Note note = findNote(indexToDelete);
+
+
+            for (int i = 0; i < note.getItems().size(); i++)
+            {
+                note.deleteItem(i);
+            }
+
+
             return notes.remove(indexToDelete);
+
         }
         return null;
     }
@@ -238,8 +245,8 @@ public class NoteAPI {
             {
                 if(!note.isNoteArchived())
                 {
-                    for (int i = 0; i < notes.size(); i++)
-                    {listOfActNotes= listOfActNotes + i +": "+ notes.get(i)+"\n";}
+
+                    {listOfActNotes= listOfActNotes +  notes.indexOf(note) +": "+ note +"\n";}
                 }
 
             }
@@ -251,11 +258,10 @@ public class NoteAPI {
 
     public String listArchivedNotes()
     {
-        if(numberOfActiveNotes()==0)
+        if(notes.isEmpty())
         {
-            return "No active notes stored";
+            return"no archived notes";
         }
-
         else
         {
             String listOfActNotes="";
@@ -264,7 +270,7 @@ public class NoteAPI {
                 if(note.isNoteArchived())//true
                 {
                     for (int i = 0; i < notes.size(); i++)
-                    {listOfActNotes= listOfActNotes + i +": "+ notes.get(i)+"\n";}
+                    {listOfActNotes= listOfActNotes + notes.indexOf(note) +": "+ note+"\n";}
                 }
 
             }
@@ -281,7 +287,7 @@ public class NoteAPI {
             return "No notes stored";
         } else if (numberOfNotesByCategory(category)==0)
         {
-            return "No notes with category";
+            return "No notes with "+category;
         }
         else
         {
@@ -308,7 +314,7 @@ public class NoteAPI {
         }
         else if (numberOfNotesByPriority(priority)==0)
         {
-            return "No notes of that priority";
+            return "No notes of that "+priority;
         }
         else
         {
@@ -338,11 +344,15 @@ public class NoteAPI {
         }
         else {
             String toDoItemString = "";
-            for (int i = 0; i < notes.size(); i++)
-            {
+            for (Note note : notes) {
 
-                if (findNote(i).checkNoteCompletionStatus() == false && numberOfNotes() != 0) {
-                    toDoItemString = toDoItemString + findNote(i).getNoteTitle() + ":    " + findNote(i).getItems() + "\n";
+                for (int i = 0; i < note.numberOfItems(); i++) {
+                    if (note.findItem(i).isItemCompleted() == false) {
+                        Item item = note.findItem(i);
+                        toDoItemString = toDoItemString + note.getNoteTitle() + ": "+item;
+
+                    }
+
                 }
             }
             return toDoItemString;
@@ -403,22 +413,19 @@ public class NoteAPI {
             for (Note note : notes)
             {
 
+                for (int i = 0; i < note.numberOfItems(); i++)
                 {
-
-
-                    for (int i = 0; i < note.numberOfItems(); i++)
-                    {
                         if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
                         {
                             Item item = note.findItem(i);
                             itemMatching = itemMatching + note.getNoteTitle() + item ;
                         }
 
-                    }
-
-
-
                 }
+
+
+
+
             }
         }
         return itemMatching ;
