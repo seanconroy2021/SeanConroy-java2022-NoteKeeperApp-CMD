@@ -78,7 +78,7 @@ private ArrayList<Item> items; //Item is the class
     }
 
 
-    // methods
+    // methodsfindNote(i).getNoteTitle().equalsIgnoreCase(searchString) == true)
 
     public boolean isValidIndex ( int index )
     {
@@ -175,7 +175,7 @@ private ArrayList<Item> items; //Item is the class
     }
 
 
-
+// number of items
     public int  numberOfItems()
     {
         return items.size();
@@ -189,6 +189,36 @@ private ArrayList<Item> items; //Item is the class
      * If all items are completed it will send back true.
      *
      */
+
+    public int numberOfCompleteItems()
+    {
+        int numOfCompletedItems =0;
+        for (Item item : items) {
+            boolean test  = item.isItemCompleted();
+            if (test == true)
+            {
+               numOfCompletedItems = numOfCompletedItems +1 ;
+            }
+
+        }
+        return numOfCompletedItems;
+    }
+
+    public int numberOfTodoItems()
+    {
+        int numOfCompletedItems =0;
+        for (Item item : items) {
+            boolean test  = item.isItemCompleted();
+            if (test == false)
+            {
+                numOfCompletedItems = numOfCompletedItems +1 ;
+            }
+
+        }
+        return numOfCompletedItems;
+    }
+
+
 
     public boolean checkNoteCompletionStatus() //notDone
     {
@@ -209,7 +239,7 @@ private ArrayList<Item> items; //Item is the class
         return true;
     }
 
-
+ //
 
 
     @Override

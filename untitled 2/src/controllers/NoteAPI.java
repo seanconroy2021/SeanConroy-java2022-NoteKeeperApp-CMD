@@ -115,15 +115,7 @@ public class NoteAPI {
         return notes.size();
     }
 
-    public Note findNote(int index)
-    {
-        if(isValidIndex(index))
-        {
-            return notes.get(index);
 
-        }
-        return null;
-    }
 
     public int numberOfArchivedNotes()
     {
@@ -170,13 +162,13 @@ public class NoteAPI {
         return numNoteInCategory;
     }
 
-    public int numberOfNotesByPriority(int priority)//notdone
+    public int numberOfNotesByPriority(int priority)
     {
         int numNoteInPriority=0;
         for (Note note : notes) {
             if (note.getNotePriority() == priority) //false
             {
-                numNoteInPriority = numNoteInPriority+1;
+                numNoteInPriority += 1;
 
             }
         }
@@ -195,22 +187,22 @@ public class NoteAPI {
     }
     public int numberOfCompleteItems()
     {
-        int numOfItems =0;
-        for (Note note : notes) {
-            if(note.checkNoteCompletionStatus() == true)//true
-            {  numOfItems = numOfItems + note.numberOfItems();}
+        int numOfItems = 0;
+        for (Note note : notes)
+        {
 
+            numOfItems= numOfItems +note.numberOfCompleteItems();
         }
         return numOfItems;
     }
 
     public int numberOfTodoItems()
     {
-        int numOfItems=0;
-        for (Note note : notes) {
-            if(note.checkNoteCompletionStatus()==false)//false
-            {  numOfItems = numOfItems + note.numberOfItems();}
+        int numOfItems =0;
+        for (Note note : notes)
+        {
 
+            numOfItems= numOfItems +note.numberOfTodoItems();
         }
         return numOfItems;
     }
@@ -298,8 +290,8 @@ public class NoteAPI {
             {
                 if(note.getNoteCategory().equalsIgnoreCase(category))//true
                 {
-                    for (int i = 0; i < notes.size(); i++)
-                    {listOfNoteByCat= listOfNoteByCat + i +": "+ notes.get(i)+"\n";}
+
+                    {listOfNoteByCat= listOfNoteByCat  +notes.indexOf(note) +": "+ note+"\n";}
                 }
 
             }
@@ -313,19 +305,23 @@ public class NoteAPI {
         if(numberOfNotes() ==0 )
         {
             return "No notes stored";
-        } else if (numberOfNotesByPriority(priority)==0)
+        }
+        else if (numberOfNotesByPriority(priority)==0)
         {
-            return "No notes with priority";
+            return "No notes of that priority";
         }
         else
         {
             String listOfNoteByPriority="";
-            for (Note note : notes)
+            for (int i = 0; i < notes.size(); i++)
             {
-                if(note.getNotePriority()==priority)//true
+
+                if(findNote(i).getNotePriority()==priority)//true
                 {
-                    for (int i = 0; i < notes.size(); i++)
-                    {listOfNoteByPriority= listOfNoteByPriority + i +": "+ notes.get(i)+"\n";}
+
+                    {
+                        listOfNoteByPriority= listOfNoteByPriority + i +": "+ notes.get(i)+"\n";
+                    }
                 }
 
             }
@@ -342,9 +338,11 @@ public class NoteAPI {
         }
         else {
             String toDoItemString = "";
-            for (Note note : notes) {
-                if (note.checkNoteCompletionStatus() == false && numberOfNotes() != 0) {
-                    toDoItemString = toDoItemString + note.getNoteTitle() + ":    " + note.getItems() + "\n";
+            for (int i = 0; i < notes.size(); i++)
+            {
+
+                if (findNote(i).checkNoteCompletionStatus() == false && numberOfNotes() != 0) {
+                    toDoItemString = toDoItemString + findNote(i).getNoteTitle() + ":    " + findNote(i).getItems() + "\n";
                 }
             }
             return toDoItemString;
@@ -356,14 +354,74 @@ public class NoteAPI {
         return "notdone-test";
     }
 
+    //Finding / Searching Methods
+
+    public Note findNote(int index)
+    {
+        if(isValidIndex(index))
+        {
+            return notes.get(index);
+
+        }
+        return null;
+    }
     public String searchNotesByTitle(String searchString)
     {
-        return "notdone-test";
+        String foundNote = "";
+       if(notes.isEmpty())
+       {
+           return "No notes stored";
+       }
+       else
+       {
+           for (int i = 0; i < notes.size(); i++)
+           {
+
+               if( findNote(i).getNoteTitle().toLowerCase().contains(searchString.toLowerCase()) == true)
+               {
+                   foundNote = foundNote + i + findNote(i).getNoteTitle();
+               }
+           }
+       }
+
+       if (foundNote.equals("")) {
+           return "No notes found for" + ": " + searchString;
+       }
+       return foundNote;
     }
 
     public String searchItemByDescription(String searchString)
     {
-        return "notdone-test";
+        String itemMatching ="";
+        if(numberOfNotes() ==0 )
+        {
+            return "No notes stored";
+        }
+        else
+        {
+
+            for (Note note : notes)
+            {
+
+                {
+
+
+                    for (int i = 0; i < note.numberOfItems(); i++)
+                    {
+                        if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
+                        {
+                            Item item = note.findItem(i);
+                            itemMatching = itemMatching + note.getNoteTitle() + item ;
+                        }
+
+                    }
+
+
+
+                }
+            }
+        }
+        return itemMatching ;
     }
 
 

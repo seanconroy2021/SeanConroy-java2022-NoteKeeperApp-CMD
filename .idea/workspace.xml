@@ -66,7 +66,7 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.NoteAPITest">
-    <configuration name="NoteAPITest$ArrayListCRUD.archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NoteAPITest$FindingSearchingMethods.searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
         <pattern>
@@ -75,14 +75,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
-      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ArrayListCRUD" />
-      <option name="METHOD_NAME" value="archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$FindingSearchingMethods" />
+      <option name="METHOD_NAME" value="searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NoteAPITest$ListingMethods.listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesByPriorityWhenNoNotesOfThatPriorityExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
         <pattern>
@@ -92,13 +92,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
       <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
-      <option name="METHOD_NAME" value="listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" />
+      <option name="METHOD_NAME" value="listNotesBySelectedPriorityReturnsNoNotesByPriorityWhenNoNotesOfThatPriorityExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NoteAPITest$ListingMethods.listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="seanconroy2021-Assingment01JAVA-2022-II" />
       <extension name="coverage">
         <pattern>
@@ -108,8 +108,27 @@
       </extension>
       <option name="PACKAGE_NAME" value="controllers.NoteAPITest" />
       <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest$ListingMethods" />
-      <option name="METHOD_NAME" value="listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" />
+      <option name="METHOD_NAME" value="listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.NoteAPITest" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="controllers.NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty" />
+        <pattern testClass="controllers.NoteAPITest$ListingMethods,listAllNotesReturnsNotesWhenArrayListHasNotesStored" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,28 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NoteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="seanconroy2021-Assingment01JAVA-2022-II" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="models" />
-      <option name="MAIN_CLASS_NAME" value="models.NoteTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.NoteAPITest" />
-        <item itemvalue="JUnit.NoteTest" />
-        <item itemvalue="JUnit.NoteAPITest$ArrayListCRUD.archivingANoteThatHasAllCompleteItemsReturnsTrueAndArchivesNote" />
-        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listArchivedNotesReturnsNoArchivedNotesStoredWhenArrayListIsEmpty" />
-        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listArchivedNotesReturnsArchivedNotesWhenArrayListHasArchivedNotesStored" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesByPriorityWhenNoNotesOfThatPriorityExist" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods,listTodoItemsReturnsNoNotesStoredWhenArrayListIsEmpty and 1 more" />
+        <item itemvalue="JUnit.NoteAPITest$ListingMethods.listNotesBySelectedPriorityReturnsNoNotesWhenArrayListIsEmpty" />
+        <item itemvalue="JUnit.NoteAPITest$FindingSearchingMethods.searchNotesByTitleReturnsNotesFoundWhenArrayListHasNotesMatchingSearchTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +171,7 @@
       <workItem from="1666775522544" duration="4020000" />
       <workItem from="1666862354840" duration="1596000" />
       <workItem from="1666958290220" duration="2994000" />
-      <workItem from="1667047813885" duration="47246000" />
+      <workItem from="1667047813885" duration="63953000" />
     </task>
     <servers />
   </component>
