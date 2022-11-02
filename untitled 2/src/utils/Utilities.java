@@ -101,6 +101,7 @@ public class Utilities {
      * @return Returns completed if true and todo when false .
      */
 
+
     public static String StatusOfCompilation (boolean item)
     {
         if (item == true)
@@ -111,6 +112,25 @@ public class Utilities {
         {
             return"[TODO]";
         }
+    }
+
+    /**
+     * This method return both true (Successful) & false (NOT Successful) to the user
+     * @param test The boolean that being tested
+     * @return Return Successful if true and NOT Successful for false.
+     */
+    public static String wasSuccessfulOutput (boolean test)
+    {
+
+        if (test)
+        {
+            return "Successful";
+        }
+        else
+        {
+            return "NOT Successful Try Again";
+        }
+
     }
 
 }

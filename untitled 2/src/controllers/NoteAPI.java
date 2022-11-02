@@ -2,6 +2,7 @@ package controllers;
 import models.Item;
 import models.Note;
 import utils.CategoryUtility;
+import utils.Utilities;
 
 import java.util.ArrayList;
 
@@ -51,31 +52,7 @@ public class NoteAPI {
     {
         if(isValidIndex(indexToDelete)==true)
         {
-
-
-
-            Note note = findNote(indexToDelete);
-            //want to delete all items in  the note object
-            note.numberOfItems();
-            note.deleteItem(indexToDelete);
-
-
             return notes.remove(indexToDelete);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
         return null;
     }
@@ -461,7 +438,7 @@ public class NoteAPI {
                 for (int i = 0; i < note.numberOfItems(); i++)
                 {
                         if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
-                        {
+                        {       //Utilities.StatusOfCompilation(item.isItemCompleted()
                             Item item = note.findItem(i);
                             itemMatching = itemMatching + note.getNoteTitle() + item ;
                         }
