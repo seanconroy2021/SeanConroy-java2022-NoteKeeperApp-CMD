@@ -56,10 +56,12 @@ public class Driver {
      {
          switch (option)
          {
+             //NOTE MENU Options
              case 1 -> addNote();
              case 2 -> viewNotes();
              case 3 -> updateNote();
              case 4 -> deleteNote();
+             case 5 -> archiveeNote();
 
 
 
@@ -257,7 +259,7 @@ public class Driver {
         if(noteInTheSystem())
         {
             printAllNotes();
-            int indexToDelete =ScannerInput.readNextInt("Enter the index of note to update ==> ") ;
+            int indexToDelete =ScannerInput.readNextInt("Enter the index of note to delete ==> ") ;
             while(!noteAPI.isValidIndex(indexToDelete))
             {
                 indexToDelete =ScannerInput.readNextInt("Enter the index of note is valid try again ==> ") ;
@@ -278,7 +280,31 @@ public class Driver {
         }
     }
 
-    
+
+    private void archiveeNote()
+    {
+        printActivateNotes();
+        int indexToArchive =ScannerInput.readNextInt("Enter the index of note to archive  ==> ") ;
+        while(!noteAPI.isValidIndex(indexToArchive))
+        {
+            indexToArchive =ScannerInput.readNextInt("Enter the index of note is valid try again ==> ") ;
+        }
+        boolean test = noteAPI.archiveNote(indexToArchive);
+        System.out.println(Utilities.wasSuccessfulOutput(test));
+
+    }
+
+    //ITEM MENU Options
+
+    private void addItemToNote()
+    {
+        
+    }
+
+
+
+
+
 
 
 
