@@ -1,5 +1,6 @@
 package main;
 
+import models.Item;
 import models.Note;
 import utils.CategoryUtility;
 import utils.ScannerInput;
@@ -63,6 +64,10 @@ public class Driver {
              case 4 -> deleteNote();
              case 5 -> archiveeNote();
 
+
+             case 6 -> addItemToNote();
+             case 7 ->updateItemDescInNote();
+             case 8 ->deleteItemFromNote();
 
 
              default -> System.out.println("Invalid option entered: " + option);
@@ -173,6 +178,8 @@ public class Driver {
         {return true;}
     }
 
+
+
     private void viewNotes() {
         //https://texteditor.com/ascii-frames/
         if (noteInTheSystem())
@@ -273,7 +280,7 @@ public class Driver {
             else
             {
                 System.out.println(Utilities.wasSuccessfulOutput(true));
-                System.out.println(note);
+
             }
 
 
@@ -283,22 +290,105 @@ public class Driver {
 
     private void archiveeNote()
     {
-        printActivateNotes();
-        int indexToArchive =ScannerInput.readNextInt("Enter the index of note to archive  ==> ") ;
-        while(!noteAPI.isValidIndex(indexToArchive))
+        if(noteInTheSystem())
         {
-            indexToArchive =ScannerInput.readNextInt("Enter the index of note is valid try again ==> ") ;
-        }
-        boolean test = noteAPI.archiveNote(indexToArchive);
-        System.out.println(Utilities.wasSuccessfulOutput(test));
+            printActivateNotes();
 
+            int indexToArchive = ScannerInput.readNextInt("Enter the index of note to archive  ==> ");
+            while (!noteAPI.isValidIndex(indexToArchive)) {
+                indexToArchive = ScannerInput.readNextInt("Enter the index of note is valid try again ==> ");
+            }
+            boolean test = noteAPI.archiveNote(indexToArchive);
+            System.out.println(Utilities.wasSuccessfulOutput(test));
+        }
     }
 
     //ITEM MENU Options
 
     private void addItemToNote()
     {
-        
+        if(noteInTheSystem())
+        {
+            printActivateNotes();
+
+            int index = ScannerInput.readNextInt("Enter the index of note to add item  ==> ");
+            while (!noteAPI.isValidIndex(index)) {
+                index = ScannerInput.readNextInt("Enter the index of note is valid try again ==> ");
+            }
+            String itemDesc = ScannerInput.readNextLine("Enter the Description for the item: ");
+            Note note =noteAPI.findNote(index);
+
+           boolean test = note.addItem(new Item(itemDesc));
+           System.out.println(Utilities.wasSuccessfulOutput(test));
+
+
+        }
+    }
+
+    private void updateItemDescInNote() //notdone
+    {
+        if(noteInTheSystem()) {
+            printActivateNotes();
+            int index = ScannerInput.readNextInt("Enter the index of note to description  ==> ");
+            while (!noteAPI.isValidIndex(index)) {
+                index = ScannerInput.readNextInt("Enter the index of note is valid try again ==> ");
+            }
+
+            int itemIndex = ScannerInput.readNextInt("Enter the index of item like to change  ==> ");
+            String itemDesc = ScannerInput.readNextLine("Enter the new Description for the item: ");
+
+            char status = ScannerInput.readNextChar("Enter T for Todo & C for complete: ");
+
+            while(!Utilities.itemStatusConvertInputChecker(status))
+            {
+                status = ScannerInput.readNextChar("Enter T for Todo & C for complete (Try Again) : ");
+            }
+
+
+            Note note = noteAPI.findNote(index);
+            boolean test = note.updateItem(itemIndex, itemDesc,Utilities.ItemStatusConvert(status));
+            Utilities.wasSuccessfulOutput(test);
+            printAllNotes();
+        }
+    }
+
+    private void deleteItemFromNote() {
+        if(noteInTheSystem())
+        {
+            printActivateNotes();
+            int index = ScannerInput.readNextInt("Enter the index of note of which like delete an item from  ==> ");
+            while (!noteAPI.isValidIndex(index)) {
+                index = ScannerInput.readNextInt("Enter the index of note of which like delete an item from try again ==> ");
+            }
+
+            Note note = noteAPI.findNote(index);
+
+            int itemIndex = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
+
+//        while (itemIndex <= note.getItems().size() && index>=0) { // need to be fixed
+//            index = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
+//        }
+
+            Item item = note.deleteItem(itemIndex);
+            if (item == null) {
+                System.out.println(Utilities.wasSuccessfulOutput(false));
+            } else {
+                System.out.println(Utilities.wasSuccessfulOutput(true));
+
+            }
+        }
+    }
+
+       private void markCompletionOfItem()
+       {
+
+       }
+
+
+
+
+
+
     }
 
 
@@ -315,7 +405,12 @@ public class Driver {
 
 
 
-}
+
+
+
+
+
+
 
 
 

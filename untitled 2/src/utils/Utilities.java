@@ -117,7 +117,7 @@ public class Utilities {
     /**
      * This method return both true (Successful) & false (NOT Successful) to the user
      * @param test The boolean that being tested
-     * @return Return Successful if true and NOT Successful for false.
+     * @return Return Successful if true and NOT Successful
      */
     public static String wasSuccessfulOutput (boolean test)
     {
@@ -129,6 +129,41 @@ public class Utilities {
         else
         {
             return "NOT Successful Try Again";
+        }
+
+    }
+
+
+    /**
+     * This method returns true if the charToConvert value is for completed or false if is todo .
+     *
+     * @param charToConvert The char value that will be used to determine true/false.
+     * @return Returns true if the charToConvert value is for completed or false if is todo
+     */
+    public static boolean ItemStatusConvert(char charToConvert)
+    {
+       if (charToConvert== 't'||charToConvert=='T')
+       {
+           return false;
+       }
+       else  {
+           return true;
+
+       }
+    }
+
+    public static boolean itemStatusConvertInputChecker(char charToConvert)
+    {
+        if(charToConvert== 't'||charToConvert=='T')
+        {
+            return true;
+        } else if (charToConvert== 'c'||charToConvert=='C')
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
 
     }
