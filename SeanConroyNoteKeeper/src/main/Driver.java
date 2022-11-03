@@ -81,7 +81,8 @@ public class Driver {
              case 17 -> printItemCompletionStatusByCategory();
              case 18 -> searchItemsByDescription();
 
-
+             case 20 ->savePosts();
+             case 21 ->loadPosts();
              default -> System.out.println("Invalid option entered: " + option);
          }
 
@@ -520,6 +521,26 @@ public class Driver {
                System.out.println(noteAPI.searchItemByDescription(itemDesc));
            }
        }
+
+
+
+    //load all the posts into the newsFeed from a file on the hard disk
+    private void loadPosts() {
+        try {
+            noteAPI.load();
+        } catch (Exception e) {
+            System.err.println("Error reading from file: " + e);
+        }
+    }
+
+    //save all the posts in the newsFeed to a file on the hard disk
+    private void savePosts() {
+        try {
+            noteAPI.save();
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e);
+        }
+    }
 
 
 
