@@ -65,9 +65,18 @@ public class Driver {
              case 5 -> archiveeNote();
 
 
-             case 6 -> addItemToNote();
-             case 7 ->updateItemDescInNote();
-             case 8 ->deleteItemFromNote();
+             case 6 ->  addItemToNote();
+             case 7 ->  updateItemDescInNote();
+             case 8 ->  deleteItemFromNote();
+             case 9 ->  markCompletionOfItem();
+
+             case 10 -> printActiveAndArchivedReport();
+             case 11 -> archiveNotesWithAllItemsComplete();
+             case 12 -> printNotesBySelectedCategory();
+             case 13 -> printNotesByPriority();
+             case 14 -> searchNotesByTitle();
+
+             case 15 -> printAllTodoItems();
 
 
              default -> System.out.println("Invalid option entered: " + option);
@@ -329,7 +338,7 @@ public class Driver {
     {
         if(noteInTheSystem()) {
             printActivateNotes();
-            int index = ScannerInput.readNextInt("Enter the index of note to description  ==> ");
+            int index = ScannerInput.readNextInt("Enter the index of note that wish change item of  ==> ");
             while (!noteAPI.isValidIndex(index)) {
                 index = ScannerInput.readNextInt("Enter the index of note is valid try again ==> ");
             }
@@ -348,7 +357,7 @@ public class Driver {
             Note note = noteAPI.findNote(index);
             boolean test = note.updateItem(itemIndex, itemDesc,Utilities.ItemStatusConvert(status));
             Utilities.wasSuccessfulOutput(test);
-            printAllNotes();
+
         }
     }
 
@@ -381,15 +390,108 @@ public class Driver {
 
        private void markCompletionOfItem()
        {
+           if(noteInTheSystem())
+           {
+               printActivateNotes();
+               int index = ScannerInput.readNextInt("Enter the index of note of which like update completion status of   ==> ");
+               while (!noteAPI.isValidIndex(index)) {
+                   index = ScannerInput.readNextInt("Enter the index of note of which like update completion status of  (try again) ==> ");
+               }
 
+               int itemIndex = ScannerInput.readNextInt("Enter the index of item like to change  ==> ");
+
+               char status = ScannerInput.readNextChar("Enter T for Todo & C for complete: ");
+
+               while(!Utilities.itemStatusConvertInputChecker(status))
+               {
+                   status = ScannerInput.readNextChar("Enter T for Todo & C for complete (Try Again) : ");
+               }
+
+
+               Note note = noteAPI.findNote(index);
+               Item item = note.getItems().get(itemIndex);
+               System.out.println(item.getItemDescription());
+               boolean test = note.updateItem(itemIndex, item.getItemDescription() ,Utilities.ItemStatusConvert(status));
+               Utilities.wasSuccessfulOutput(test);
+               System.out.println(item.getItemDescription());
+
+
+
+           }
+       }
+
+        //REPORT MENU FOR NOTES Options
+        private void printActiveAndArchivedReport()
+        {
+            if(noteInTheSystem())
+            {
+                printActivateNotes();
+                printArchivedNotes();
+            }
+        }
+
+        private void archiveNotesWithAllItemsComplete()
+        {
+            if(noteInTheSystem())
+            {
+                noteAPI.archiveNotesWithAllItemsComplete();
+            }
+
+        }
+
+        private void printNotesBySelectedCategory()
+        {
+            if(noteInTheSystem())
+            {
+                String category =ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to display notes ==> ");
+                while(!CategoryUtility.isValidCategory(category))
+                {
+                    category = ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to display notes (try again) ==> ");
+                }
+
+                System.out.println(noteAPI.listNotesBySelectedCategory(category));
+            }
+        }
+
+        private void printNotesByPriority()
+        {
+            if(noteInTheSystem())
+            {
+                int priority = ScannerInput.readNextInt("Enter the a priority (1-5) to list notes ==>");
+                while(!Utilities.validRange(priority, 1, 5));
+                {
+                    priority = ScannerInput.readNextInt("Enter the a priority (1-5) to list notes (try again) ==>");
+                }
+
+                noteAPI.listNotesBySelectedPriority(priority);
+            }
+
+        }
+
+        private void searchNotesByTitle()
+        {
+            if(noteInTheSystem())
+            {
+                String title = ScannerInput.readNextLine("Enter the title to search by: ");
+                System.out.println(noteAPI.searchNotesByTitle(title));
+            }
+        }
+
+        //REPORT MENU FOR ITEMS Options
+
+       private void printAllTodoItems()
+       {
+           if(noteInTheSystem())
+           {
+               noteAPI.listTodoItems(); // with note title
+           }
        }
 
 
 
 
 
-
-    }
+}
 
 
 
