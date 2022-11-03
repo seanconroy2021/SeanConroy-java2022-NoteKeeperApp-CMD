@@ -158,6 +158,8 @@
       <workItem from="1666958290220" duration="2994000" />
       <workItem from="1667047813885" duration="72877000" />
       <workItem from="1667320555274" duration="43007000" />
+      <workItem from="1667474162364" duration="57000" />
+      <workItem from="1667474240123" duration="6309000" />
     </task>
     <servers />
   </component>
@@ -174,21 +176,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/untitled 2/test/controllers/NoteAPITest.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/untitled 2/src/controllers/NoteAPI.java</url>
-          <line>439</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -77,6 +77,9 @@ public class Driver {
              case 14 -> searchNotesByTitle();
 
              case 15 -> printAllTodoItems();
+             case 16 -> printOverallItemsTodoComplete();
+             case 17 -> printItemCompletionStatusByCategory();
+             case 18 -> searchItemsByDescription();
 
 
              default -> System.out.println("Invalid option entered: " + option);
@@ -472,7 +475,7 @@ public class Driver {
         {
             if(noteInTheSystem())
             {
-                String title = ScannerInput.readNextLine("Enter the title to search by: ");
+                String title = ScannerInput.readNextLine("Enter the title note to search by: ");
                 System.out.println(noteAPI.searchNotesByTitle(title));
             }
         }
@@ -483,9 +486,44 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
-               noteAPI.listTodoItems(); // with note title
+               System.out.println(noteAPI.listTodoItems()); // with note title
            }
        }
+
+       private void printOverallItemsTodoComplete()
+       {
+           if(noteInTheSystem())
+           {
+               System.out.println("ITEMS [Completed] : "+ noteAPI.numberOfCompleteItems()+"\n"+"ITEMS [TO D0] : "+noteAPI.numberOfTodoItems());
+           }
+       }
+
+       private void printItemCompletionStatusByCategory()
+       {
+           if(noteInTheSystem())
+           {
+               String category =ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to show Completion Status ==> ");
+               while(!CategoryUtility.isValidCategory(category))
+               {
+                   category = ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to show Completion Status (try again) ==> ");
+               }
+
+               System.out.println(noteAPI.listItemStatusByCategory(category));
+           }
+       }
+
+       private void searchItemsByDescription()
+       {
+           if(noteInTheSystem())
+           {
+               String itemDesc = ScannerInput.readNextLine("Enter the item Description you are looking for : ");
+               System.out.println(noteAPI.searchItemByDescription(itemDesc));
+           }
+       }
+
+
+
+
 
 
 

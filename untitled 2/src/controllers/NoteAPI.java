@@ -340,7 +340,7 @@ public class NoteAPI {
                 for (int i = 0; i < note.numberOfItems(); i++) {
                     if (note.findItem(i).isItemCompleted() == false) {
                         Item item = note.findItem(i);
-                        toDoItemString = toDoItemString + note.getNoteTitle() + ": "+item;
+                        toDoItemString = toDoItemString + note.getNoteTitle() +":   " +item.getItemDescription()+ ". "+Utilities.StatusOfCompilation(item.isItemCompleted())+"\n";
 
                     }
 
@@ -411,7 +411,7 @@ public class NoteAPI {
 
                if( findNote(i).getNoteTitle().toLowerCase().contains(searchString.toLowerCase()) == true)
                {
-                   foundNote = foundNote + i + findNote(i).getNoteTitle();
+                   foundNote = foundNote + i +": " +findNote(i).getNoteTitle()+"\n";
                }
            }
        }
@@ -429,7 +429,8 @@ public class NoteAPI {
         {
             return "No notes stored";
         }
-        else
+
+         else
         {
 
             for (Note note : notes)
@@ -440,11 +441,16 @@ public class NoteAPI {
                         if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
                         {       //Utilities.StatusOfCompilation(item.isItemCompleted()
                             Item item = note.findItem(i);
-                            itemMatching = itemMatching + note.getNoteTitle() + item ;
+                            itemMatching = itemMatching + note.getNoteTitle() +" "+ i +": "+ item.getItemDescription()+". "+ Utilities.StatusOfCompilation(item.isItemCompleted())+"\n" ;
                         }
 
                 }
 
+            }
+
+            if(itemMatching =="")
+            {
+                return "No items found for: "+searchString;
             }
         }
         return itemMatching ;
