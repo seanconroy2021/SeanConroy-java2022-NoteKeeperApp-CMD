@@ -40,27 +40,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_directory_selection": "/Users/seanconroy/Library/CloudStorage/OneDrive-WaterfordInstituteofTechnology/year of colege/Year 2/Semster 2/PROGRAMMING/assingment1/seanconroy2021-Assingment01JAVA-2022-II/untitled 2/src/controllers",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/seanconroy/Library/CloudStorage/OneDrive-WaterfordInstituteofTechnology/year of colege/Year 2/Semster 2/PROGRAMMING/assingment1/seanconroy2021-Assingment01JAVA-2022-II/untitled 2/src/controllers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/SeanConroyNoteKeeper/lib" />
@@ -129,9 +129,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Driver" />
-        <item itemvalue="JAR Application.xstream-1.4.17.jar" />
-        <item itemvalue="JUnit.All in seanconroy2021-Assingment01JAVA-2022-II" />
         <item itemvalue="JUnit.NoteAPITest" />
+        <item itemvalue="JUnit.All in seanconroy2021-Assingment01JAVA-2022-II" />
+        <item itemvalue="JAR Application.xstream-1.4.17.jar" />
         <item itemvalue="JUnit.NoteAPITest$ArrayListCRUD.deletingANoteThatExistsDeletesAndReturnsDeletedObject" />
       </list>
     </recent_temporary>
@@ -152,7 +152,8 @@
       <workItem from="1667047813885" duration="72877000" />
       <workItem from="1667320555274" duration="43007000" />
       <workItem from="1667474162364" duration="57000" />
-      <workItem from="1667474240123" duration="9601000" />
+      <workItem from="1667474240123" duration="10464000" />
+      <workItem from="1667495149907" duration="9895000" />
     </task>
     <servers />
   </component>

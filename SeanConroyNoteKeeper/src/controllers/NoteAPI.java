@@ -121,6 +121,8 @@ public class NoteAPI {
 
 
 
+
+
     public int numberOfArchivedNotes()
     {
         int numArchived = 0;
@@ -220,13 +222,43 @@ public class NoteAPI {
             String listOfNotes = "";
 
             for (int i = 0; i < notes.size(); i++) {
-                listOfNotes = listOfNotes + i + ": " + notes.get(i) + "\n";
+                Note note = notes.get(i);
+                listOfNotes = listOfNotes + displayString(i);
             }
 
             return listOfNotes;
         }
     }
 
+
+    // display String
+    public String displayString(int index)
+    {
+        Note note = notes.get(index);
+        return index +": Note Title: " + note.getNoteTitle() +". Note Priority: "+ note.getNotePriority()+". Note Archived: "+ Utilities.booleanToYN(note.isNoteArchived()) + "\n"+ note.listItems()+ "\n";
+    }
+
+    public String displayString(Note note)
+    {
+        int index =  notes.indexOf(note);
+        return index +": Note Title: " + note.getNoteTitle() +". Note Priority: "+ note.getNotePriority()+". Note Archived: "+ Utilities.booleanToYN(note.isNoteArchived()) + "\n"+ note.listItems()+ "\n";
+    }
+
+
+
+    public String desginHelper(int option)
+    {
+        if(option ==1 )
+        {
+            return "_________________________________________________________________________________________________________________________________________________";
+        }
+
+        else
+        {
+            return "";
+        }
+
+    }
 
     public String listActiveNotes()
     {
@@ -243,7 +275,7 @@ public class NoteAPI {
                 if(!note.isNoteArchived())
                 {
 
-                    {listOfActNotes= listOfActNotes +  notes.indexOf(note) +": "+ note +"\n";}
+                    {listOfActNotes= listOfActNotes + displayString(note);}
                 }
 
             }
@@ -259,21 +291,20 @@ public class NoteAPI {
         {
             return"no archived notes";
         }
-        else
-        {
-            String listOfActNotes="";
-            for (Note note : notes)
-            {
-                if(note.isNoteArchived())//true
-                {
-                    for (int i = 0; i < notes.size(); i++)
-                    {listOfActNotes= listOfActNotes + notes.indexOf(note) +": "+ note+"\n";}
-                }
+        else {
+            String listOfActNotes = "";
 
+            for (int i = 0; i < notes.size(); i++)
+            {   Note note = notes.get(i);
+                if (note.isNoteArchived())
+                {
+                return listOfActNotes = listOfActNotes + i + ": Note Title: " + note.getNoteTitle() + ". Note Priority: " + note.getNotePriority() + ". Note Archived: " + Utilities.booleanToYN(note.isNoteArchived()) + "\n"  + note.listItems() + "\n";
+                }
             }
 
-            return listOfActNotes;
 
+
+            return listOfActNotes;
         }
     }
 
@@ -294,7 +325,7 @@ public class NoteAPI {
                 if(note.getNoteCategory().equalsIgnoreCase(category))//true
                 {
 
-                    { listOfNoteByCat= listOfNoteByCat  +notes.indexOf(note) +": "+ note+"\n";}
+                    { listOfNoteByCat= listOfNoteByCat +displayString(note);}
                 }
 
             }
@@ -323,7 +354,7 @@ public class NoteAPI {
                 {
 
                     {
-                        listOfNoteByPriority= listOfNoteByPriority + i +": "+ notes.get(i)+"\n";
+                        listOfNoteByPriority= listOfNoteByPriority +displayString(i);
                     }
                 }
 
@@ -346,7 +377,7 @@ public class NoteAPI {
                 for (int i = 0; i < note.numberOfItems(); i++) {
                     if (note.findItem(i).isItemCompleted() == false) {
                         Item item = note.findItem(i);
-                        toDoItemString = toDoItemString + note.getNoteTitle() +":   " +item.getItemDescription()+ ". "+Utilities.StatusOfCompilation(item.isItemCompleted())+"\n";
+                        toDoItemString = toDoItemString + note.getNoteTitle() +":\t" +item.getItemDescription()+ ". "+Utilities.StatusOfCompilation(item.isItemCompleted())+"\n";
 
                     }
 
@@ -376,12 +407,12 @@ public class NoteAPI {
                         if (note.findItem(i).isItemCompleted() == false)
                         {
                             numToDo +=1;
-                            toDoString += note.findItem(i)+" (Note:  "+note.getNoteTitle()+" )"+"\n";
+                            toDoString += note.findItem(i).getItemDescription()+" (Note: "+note.getNoteTitle()+" )"+"\n";
 
                         } else if (note.findItem(i).isItemCompleted() == true)
                         {
                             numComp+=1;
-                            completeString += note.findItem(i)+" (Note:  "+note.getNoteTitle()+" )"+"\n";
+                            completeString += note.findItem(i).getItemDescription()+" (Note: "+note.getNoteTitle()+" )"+"\n";
                         }
 
                     }
@@ -417,7 +448,7 @@ public class NoteAPI {
 
                if( findNote(i).getNoteTitle().toLowerCase().contains(searchString.toLowerCase()) == true)
                {
-                   foundNote = foundNote + i +": " +findNote(i).getNoteTitle()+"\n";
+                   foundNote = foundNote + displayString(i);
                }
            }
        }
@@ -447,7 +478,8 @@ public class NoteAPI {
                         if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
                         {       //Utilities.StatusOfCompilation(item.isItemCompleted()
                             Item item = note.findItem(i);
-                            itemMatching = itemMatching + note.getNoteTitle() +" "+ i +": "+ item.getItemDescription()+". "+ Utilities.StatusOfCompilation(item.isItemCompleted())+"\n" ;
+                            int indexNote =  notes.indexOf(note);
+                            itemMatching = itemMatching +indexNote + ": "+ note.getNoteTitle() +" "+ i +": "+ item.getItemDescription()+". "+ Utilities.StatusOfCompilation(item.isItemCompleted())+"\n" ;
                         }
 
                 }

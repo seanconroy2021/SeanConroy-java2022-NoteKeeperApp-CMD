@@ -119,7 +119,7 @@ private ArrayList<Item> items; //Item is the class
     {
         if (items.isEmpty()== true)
         {
-            return"No items added";
+            return"\t \tNo items added"+"\n";
         }
         else
         {
@@ -127,7 +127,8 @@ private ArrayList<Item> items; //Item is the class
 
             for (int i =0; i<items.size();i++)
             {
-                listOfItems = listOfItems + i +": "+ items.get(i)+"\n";
+                Item item = findItem(i);
+                listOfItems = listOfItems +"\t"+"\t"+ i +":  Item Description: "+item.getItemDescription() + ". "+Utilities.StatusOfCompilation(item.isItemCompleted())+ "\n";
             }
 
             return listOfItems;

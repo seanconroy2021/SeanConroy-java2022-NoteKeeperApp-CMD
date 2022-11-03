@@ -4,11 +4,11 @@
       <noteTitle>sean</noteTitle>
       <notePriority>2</notePriority>
       <noteCategory>home</noteCategory>
-      <isNoteArchived>false</isNoteArchived>
+      <isNoteArchived>true</isNoteArchived>
       <items>
         <models.Item>
           <itemDescription>sean</itemDescription>
-          <isItemCompleted>false</isItemCompleted>
+          <isItemCompleted>true</isItemCompleted>
         </models.Item>
       </items>
     </models.Note>
@@ -22,7 +22,25 @@
           <itemDescription>seanworld2o3o23o23</itemDescription>
           <isItemCompleted>false</isItemCompleted>
         </models.Item>
+        <models.Item>
+          <itemDescription>helloworld</itemDescription>
+          <isItemCompleted>false</isItemCompleted>
+        </models.Item>
       </items>
+    </models.Note>
+    <models.Note>
+      <noteTitle>sean</noteTitle>
+      <notePriority>1</notePriority>
+      <noteCategory>home</noteCategory>
+      <isNoteArchived>true</isNoteArchived>
+      <items/>
+    </models.Note>
+    <models.Note>
+      <noteTitle>sean</noteTitle>
+      <notePriority>1</notePriority>
+      <noteCategory>home</noteCategory>
+      <isNoteArchived>true</isNoteArchived>
+      <items/>
     </models.Note>
   </list>
 </object-stream>

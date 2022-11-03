@@ -145,6 +145,11 @@ public class Driver {
 
     private void addNote()
     {
+        System.out.println("""
+                _________________________________________________________________________________________
+                |                                      ADD  A NOTE                                      |
+                -----------------------------------------------------------------------------------------
+                \n""");
         String title = ScannerInput.readNextLine("Enter the Note Name: ");
 
         // if the user inputs a wrong priority it makes them input again
@@ -180,10 +185,11 @@ public class Driver {
 
     //helper method
     private boolean noteInTheSystem()
-    { // this checks to see if their is any notes in the system.
+    { // this checks to see if there is any notes in the system.
         if(noteAPI.numberOfNotes()==0)
         {
-            System.out.println("No Notes In the System");
+
+            System.out.println("\n No Notes In the System \n");
             return false;
 
         }
@@ -228,16 +234,20 @@ public class Driver {
 
     private void printAllNotes()
     {
+
         System.out.println(noteAPI.listAllNotes());
     }
 
     private void printActivateNotes()
     {
+
+
         System.out.println(noteAPI.listActiveNotes());
     }
 
     private void  printArchivedNotes()
     {
+
         System.out.println(noteAPI.listArchivedNotes());
     }
 
@@ -246,7 +256,11 @@ public class Driver {
     {
         if(noteInTheSystem())
         {
-
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                   UPDATE A NOTE                                       |
+                -----------------------------------------------------------------------------------------
+                \n""");
             printAllNotes();
             int indexToUpdate =ScannerInput.readNextInt("Enter the index of note to update ==> ") ;
             while(!noteAPI.isValidIndex(indexToUpdate))
@@ -278,6 +292,12 @@ public class Driver {
     {
         if(noteInTheSystem())
         {
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                       DELETE A NOTE                                   |
+                -----------------------------------------------------------------------------------------
+                \n""");
+
             printAllNotes();
             int indexToDelete =ScannerInput.readNextInt("Enter the index of note to delete ==> ") ;
             while(!noteAPI.isValidIndex(indexToDelete))
@@ -305,6 +325,11 @@ public class Driver {
     {
         if(noteInTheSystem())
         {
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                       ARCHIVE A NOTE                                  |
+                -----------------------------------------------------------------------------------------
+                \n""");
             printActivateNotes();
 
             int indexToArchive = ScannerInput.readNextInt("Enter the index of note to archive  ==> ");
@@ -322,6 +347,12 @@ public class Driver {
     {
         if(noteInTheSystem())
         {
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                   ADD A ITEM TO A NOTE                                |
+                -----------------------------------------------------------------------------------------
+                \n""");
+
             printActivateNotes();
 
             int index = ScannerInput.readNextInt("Enter the index of note to add item  ==> ");
@@ -341,6 +372,12 @@ public class Driver {
     private void updateItemDescInNote() //notdone
     {
         if(noteInTheSystem()) {
+
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                UPDATE AN ITEM DESCRIPTION                             |
+                -----------------------------------------------------------------------------------------
+                \n""");
             printActivateNotes();
             int index = ScannerInput.readNextInt("Enter the index of note that wish change item of  ==> ");
             while (!noteAPI.isValidIndex(index)) {
@@ -368,6 +405,11 @@ public class Driver {
     private void deleteItemFromNote() {
         if(noteInTheSystem())
         {
+            System.out.println("""
+                _________________________________________________________________________________________
+                |                                      DELETE AN ITEM                                   |
+                -----------------------------------------------------------------------------------------
+                \n""");
             printActivateNotes();
             int index = ScannerInput.readNextInt("Enter the index of note of which like delete an item from  ==> ");
             while (!noteAPI.isValidIndex(index)) {
@@ -396,6 +438,11 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
+               System.out.println("""
+                _________________________________________________________________________________________
+                |                                MARK ITEM COMPLETE/TODO                                |
+                -----------------------------------------------------------------------------------------
+                \n""");
                printActivateNotes();
                int index = ScannerInput.readNextInt("Enter the index of note of which like update completion status of   ==> ");
                while (!noteAPI.isValidIndex(index)) {
@@ -414,10 +461,9 @@ public class Driver {
 
                Note note = noteAPI.findNote(index);
                Item item = note.getItems().get(itemIndex);
-               System.out.println(item.getItemDescription());
                boolean test = note.updateItem(itemIndex, item.getItemDescription() ,Utilities.ItemStatusConvert(status));
                Utilities.wasSuccessfulOutput(test);
-               System.out.println(item.getItemDescription());
+
 
 
 
@@ -427,8 +473,14 @@ public class Driver {
         //REPORT MENU FOR NOTES Options
         private void printActiveAndArchivedReport()
         {
+
             if(noteInTheSystem())
             {
+                System.out.println("""
+                _________________________________________________________________________________________
+                |                                 ACTIVATE & ARCHIVED REPORT                            |
+                -----------------------------------------------------------------------------------------
+                \n""");
                 printActivateNotes();
                 printArchivedNotes();
             }
@@ -438,6 +490,11 @@ public class Driver {
         {
             if(noteInTheSystem())
             {
+                System.out.println("""
+                _________________________________________________________________________________________
+                |                                 ARCHIVE ALL COMPLETE  NOTES                           |
+                -----------------------------------------------------------------------------------------
+                \n""");
                 noteAPI.archiveNotesWithAllItemsComplete();
             }
 
@@ -447,6 +504,11 @@ public class Driver {
         {
             if(noteInTheSystem())
             {
+                System.out.println("""
+                _________________________________________________________________________________________
+                |                                 NOTES BY SELECTED CATEGORY                            |
+                -----------------------------------------------------------------------------------------
+                \n""");
                 String category =ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to display notes ==> ");
                 while(!CategoryUtility.isValidCategory(category))
                 {
@@ -461,8 +523,13 @@ public class Driver {
         {
             if(noteInTheSystem())
             {
+                System.out.println("""
+                _________________________________________________________________________________________
+                |                                 NOTES BY SELECTED PRIORITY                            |
+                -----------------------------------------------------------------------------------------
+                \n""");
                 int priority = ScannerInput.readNextInt("Enter the a priority (1-5) to list notes ==>");
-                while(!Utilities.validRange(priority, 1, 5));
+                while(!Utilities.validRange(priority, 0, 5));
                 {
                     priority = ScannerInput.readNextInt("Enter the a priority (1-5) to list notes (try again) ==>");
                 }
@@ -476,6 +543,11 @@ public class Driver {
         {
             if(noteInTheSystem())
             {
+                System.out.println("""
+                _________________________________________________________________________________________
+                |                                 NOTES BY SEARCHED TITLE                               |
+                -----------------------------------------------------------------------------------------
+                \n""");
                 String title = ScannerInput.readNextLine("Enter the title note to search by: ");
                 System.out.println(noteAPI.searchNotesByTitle(title));
             }
@@ -487,6 +559,11 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
+               System.out.println("""
+                _________________________________________________________________________________________
+                |                                       ALL TODO ITEMS                                  |
+                -----------------------------------------------------------------------------------------
+                \n""");
                System.out.println(noteAPI.listTodoItems()); // with note title
            }
        }
@@ -495,6 +572,11 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
+               System.out.println("""
+                _________________________________________________________________________________________
+                |                                   ALL COMPLETE ITEMS                                  |
+                -----------------------------------------------------------------------------------------
+                \n""");
                System.out.println("ITEMS [Completed] : "+ noteAPI.numberOfCompleteItems()+"\n"+"ITEMS [TO D0] : "+noteAPI.numberOfTodoItems());
            }
        }
@@ -503,6 +585,11 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
+               System.out.println("""
+                _________________________________________________________________________________________
+                |                               COMPLETION STATUS BY CATEGORY                           |
+                -----------------------------------------------------------------------------------------
+                \n""");
                String category =ScannerInput.readNextLine("Enter a Category "+ CategoryUtility.getCategories()+ " to show Completion Status ==> ");
                while(!CategoryUtility.isValidCategory(category))
                {
@@ -517,8 +604,13 @@ public class Driver {
        {
            if(noteInTheSystem())
            {
+               System.out.println("""
+                _________________________________________________________________________________________
+                |                                  SEARCH BY ITEM DESCRIPTION                           |
+                -----------------------------------------------------------------------------------------
+                \n""");
                String itemDesc = ScannerInput.readNextLine("Enter the item Description you are looking for : ");
-               System.out.println(noteAPI.searchItemByDescription(itemDesc));
+               System.out.println("\n"+ noteAPI.searchItemByDescription(itemDesc));
            }
        }
 
