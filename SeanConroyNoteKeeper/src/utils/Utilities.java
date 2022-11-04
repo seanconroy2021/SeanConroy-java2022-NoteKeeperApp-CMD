@@ -152,6 +152,12 @@ public class Utilities {
        }
     }
 
+    /**
+     * It check a char to make sure it either t or c (caps Ignored)
+     * @param charToConvert Type char that is inputted to check
+     * @return If charToConvert is either t or c return true else false
+     */
+
     public static boolean itemStatusConvertInputChecker(char charToConvert)
     {
         if(charToConvert== 't'||charToConvert=='T')

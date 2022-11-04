@@ -414,12 +414,8 @@ public class Driver {
             }
 
             Note note = noteAPI.findNote(index);
-
             int itemIndex = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
 
-//        while (itemIndex <= note.getItems().size() && index>=0) { // need to be fixed
-//            index = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
-//        }
 
             Item item = note.deleteItem(itemIndex);
             if (item == null) {

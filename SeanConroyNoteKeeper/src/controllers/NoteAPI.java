@@ -75,7 +75,7 @@ public class NoteAPI {
      */
     public Note deleteNote(int indexToDelete)
     {
-        if(isValidIndex(indexToDelete)==true)
+        if(isValidIndex(indexToDelete))
         {
             return notes.remove(indexToDelete);
         }
@@ -94,13 +94,13 @@ public class NoteAPI {
 
             Note noteFound = findNote(indexToArchive);
 
-            if (noteFound.isNoteArchived() == false && noteFound.checkNoteCompletionStatus() == true)
+            if (!noteFound.isNoteArchived() && noteFound.checkNoteCompletionStatus())
             {
                 noteFound.setNoteArchived(true); // the note is then archived
                 return true;
 
 
-            } else if (noteFound.isNoteArchived() == true && noteFound.checkNoteCompletionStatus()==false) {
+            } else if (noteFound.isNoteArchived() && !noteFound.checkNoteCompletionStatus()) {
 
                 return false;
                 //If the note exists, but is already archived or items on
@@ -133,7 +133,7 @@ public class NoteAPI {
              if(note.checkNoteCompletionStatus())// true
              {
                  note.setNoteArchived(true);
-                 newlyArchived =newlyArchived + displayString(note);
+                 newlyArchived += displayString(note);
              }
          }
         }
@@ -398,7 +398,7 @@ public class NoteAPI {
     /**
      * This method build and return a String containing all the Notes By Selected Category in the arrayList.
      * A String category is sent in.
-     * for each product note stored, the associated index is also included
+     * for each  note stored, the associated index is also included
      *
      * @param category this is String category looking for.
      * @return A string containing all the Notes By Selected Category in the arrayList or "no notes stored " or "No notes with " +category"
@@ -433,7 +433,7 @@ public class NoteAPI {
     /**
      * This method build and return a String containing all the Notes By Selected priority in the arrayList.
      * A int priority is sent in.
-     * for each product note stored, the associated index is also included
+     * for each  note stored, the associated index is also included
      *
      * @param priority this is int priority looking for.
      * @return A string containing all the Notes By Selected priority in the arrayList or "no notes stored " or "No notes with " + priority "
@@ -469,6 +469,11 @@ public class NoteAPI {
 
     }
 
+    /**
+     *This method build and return a String all items that are to do in the arraylist.
+     * @return A string which contain all the todo items with note title and item.
+     */
+
     public String listTodoItems()
     {
         if(numberOfNotes() ==0 )
@@ -480,7 +485,7 @@ public class NoteAPI {
             for (Note note : notes) {
 
                 for (int i = 0; i < note.numberOfItems(); i++) {
-                    if (note.findItem(i).isItemCompleted() == false) {
+                    if (!note.findItem(i).isItemCompleted()) {
                         Item item = note.findItem(i);
                         toDoItemString = toDoItemString + note.getNoteTitle() +":\t" +item.getItemDescription()+ ". "+Utilities.StatusOfCompilation(item.isItemCompleted())+"\n";
 
@@ -491,6 +496,14 @@ public class NoteAPI {
             return toDoItemString;
         }
     }
+
+    /**
+     * This method build and return a String containing all the items by status (todo)/(complete)  and category.
+     * A string category is sent in.
+     *
+     * @param category this is String by category looking for.
+     * @return A string containing all the TODO items and COMPLETE ITEMS  along with number of completed and todo items.
+     */
 
      public String listItemStatusByCategory(String category)
     {
@@ -509,12 +522,12 @@ public class NoteAPI {
                 if(note.getNoteCategory().equalsIgnoreCase(category))
                 {
                     for (int i = 0; i < note.numberOfItems(); i++) {
-                        if (note.findItem(i).isItemCompleted() == false)
+                        if (!note.findItem(i).isItemCompleted())
                         {
                             numToDo +=1;
                             toDoString += note.findItem(i).getItemDescription()+" (Note: "+note.getNoteTitle()+" )"+"\n";
 
-                        } else if (note.findItem(i).isItemCompleted() == true)
+                        } else if (note.findItem(i).isItemCompleted())
                         {
                             numComp+=1;
                             completeString += note.findItem(i).getItemDescription()+" (Note: "+note.getNoteTitle()+" )"+"\n";
@@ -530,6 +543,12 @@ public class NoteAPI {
 
     //Finding / Searching Methods
 
+    /**
+     * Find a note object at a specific index location
+     * If the index location is not valid it will return null.
+     * @param index Index of the Note object in the arrayList.
+     * @return The Note object or null if no object is at the index location.
+     */
     public Note findNote(int index)
     {
         if(isValidIndex(index))
@@ -539,6 +558,16 @@ public class NoteAPI {
         }
         return null;
     }
+
+    /**
+     * It searches for a note by note title. A String searchString is sent in as a parameter.
+     *
+     * @param searchString A String search string is sent in as parameter & what looking for in
+     * the note titles of the arrayList
+     * @return The notes found with that note title are built up and sent back as a
+     * String or if notes are empty "No notes stored" and if cant find any note tile matching "No notes found for:  searchString"
+     */
+
     public String searchNotesByTitle(String searchString)
     {
         String foundNote = "";
@@ -551,7 +580,7 @@ public class NoteAPI {
            for (int i = 0; i < notes.size(); i++)
            {
 
-               if( findNote(i).getNoteTitle().toLowerCase().contains(searchString.toLowerCase()) == true)
+               if(findNote(i).getNoteTitle().toLowerCase().contains(searchString.toLowerCase()))
                {
                    foundNote = foundNote + displayString(i);
                }
@@ -563,6 +592,14 @@ public class NoteAPI {
        }
        return foundNote;
     }
+
+    /**
+     * The method search for item based on item Description.
+     * A string searchString is sent in as a parameter and is used to find the item Description.
+     * @param searchString Type String it used to find an item based on item description.
+     * @return A string is built and sent back with matching item description to the String sent in.
+     * If cant find any items matching the description "No items found for searchString" is sent back.
+     */
 
     public String searchItemByDescription(String searchString)
     {
@@ -581,7 +618,7 @@ public class NoteAPI {
                 for (int i = 0; i < note.numberOfItems(); i++)
                 {
                         if( (note.findItem(i).getItemDescription().toLowerCase()).contains(searchString.toLowerCase()))
-                        {       //Utilities.StatusOfCompilation(item.isItemCompleted()
+                        {
                             Item item = note.findItem(i);
                             int indexNote =  notes.indexOf(note);
                             itemMatching = itemMatching +indexNote + ": "+ note.getNoteTitle() +" "+ i +": "+ item.getItemDescription()+". "+ Utilities.StatusOfCompilation(item.isItemCompleted())+"\n" ;
@@ -591,7 +628,7 @@ public class NoteAPI {
 
             }
 
-            if(itemMatching =="")
+            if(itemMatching.equals(""))
             {
                 return "No items found for: "+searchString;
             }
