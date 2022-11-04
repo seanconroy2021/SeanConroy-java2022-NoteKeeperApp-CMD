@@ -11,10 +11,7 @@ public class Driver {
 
     private  NoteAPI noteAPI = new NoteAPI();
 
- public static void main(String [] args)
- {
-     new Driver();
- }
+ public static void main(String [] args) {new Driver();}
 
  public Driver()
  {
@@ -495,7 +492,7 @@ public class Driver {
                 |                                 ARCHIVE ALL COMPLETE  NOTES                           |
                 -----------------------------------------------------------------------------------------
                 \n""");
-                noteAPI.archiveNotesWithAllItemsComplete();
+                System.out.println(noteAPI.archiveNotesWithAllItemsComplete());
             }
 
         }

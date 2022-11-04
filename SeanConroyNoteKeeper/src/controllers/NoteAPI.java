@@ -23,6 +23,13 @@ public class NoteAPI {
     }
 
 
+    /**
+     * This method takes in a number and checks if it is a valid index in the products ArrayList.
+     *
+     * @param index A number representing a potential index in the ArrayList.
+     * @return True of the index number passed is a valid index in the ArrayList, false otherwise.
+     */
+
     public boolean isValidIndex(int index)
     {
         return (index >= 0) && (index < notes.size());
@@ -35,7 +42,14 @@ public class NoteAPI {
      */
     public boolean add (Note note) {return notes.add(note);}
 
-
+    /**
+     * Update a models.Note in the ArrayList with the contents passed in the models.Note object parameter
+     * @param indexToUpdate Index of the note in the arrayList.
+     * @param noteTitle Title of note.
+     * @param notePriority Priority of the note.
+     * @param noteCategory Category of the note.
+     * @return The status of the update if it worked true & false otherwise.
+     */
     public boolean updateNote(int indexToUpdate, String noteTitle, int notePriority, String noteCategory)
     {
         Note foundNote = null;
@@ -54,6 +68,11 @@ public class NoteAPI {
         return false;
     }
 
+    /**
+     * Delete a note from the arrayList, if it exists, the index is passed as a parameter.
+     * @param indexToDelete Index of the note object in the arrayList.
+     * @return The deleted product object or null if no object is at the location.
+     */
     public Note deleteNote(int indexToDelete)
     {
         if(isValidIndex(indexToDelete)==true)
@@ -63,6 +82,11 @@ public class NoteAPI {
         return null;
     }
 
+    /**
+     * Archive a note in the arraylist of notes with index passed as a parameter.
+     * @param indexToArchive  Index of the note object in the arrayList.
+     * @return The status of the Archive, True if it was successful  or False if it was unsuccessful
+     */
     public boolean archiveNote(int indexToArchive) //not done
     {
 
@@ -90,6 +114,10 @@ public class NoteAPI {
 
     }
 
+    /**
+     * Archive all note in the arraylist if all items are completed.
+     * @return A string full of all notes that are archived.
+     */
     public String archiveNotesWithAllItemsComplete()
     {
         String newlyArchived="";
@@ -105,7 +133,7 @@ public class NoteAPI {
              if(note.checkNoteCompletionStatus())// true
              {
                  note.setNoteArchived(true);
-                 newlyArchived =newlyArchived + note.toString();
+                 newlyArchived =newlyArchived + displayString(note);
              }
          }
         }
@@ -114,14 +142,21 @@ public class NoteAPI {
 
 
     //Counting methods
+
+    /**
+     * It  will display the amount of notes in the system
+     * @return It will return an int of the size of notes.
+     */
     public int numberOfNotes()
     {
         return notes.size();
     }
 
 
-
-
+    /**
+     *It will get the number of archived notes in the system.
+     * @return Return an int that has the amount of archived notes.
+     */
 
     public int numberOfArchivedNotes()
     {
@@ -137,6 +172,10 @@ public class NoteAPI {
         return numArchived;
     }
 
+    /**
+     * It will get the number of activate notes in the system.
+     * @return return an int has the amount of activate notes.
+     */
     public int numberOfActiveNotes()
     {
         int numActive = 0;
@@ -151,7 +190,12 @@ public class NoteAPI {
     }
 
 
-
+    /**
+     * A parameter of String is sent in of category in then check if valid category
+     * if it is then calculate how many notes of that category there is and returns it.
+     * @param category The category of which they are looking for.
+     * @return It return a number of notes by that category if not valid category return 0.
+     */
     public int numberOfNotesByCategory(String category) {
         int numNoteInCategory = 0;
         if (CategoryUtility.isValidCategory(category)) {
@@ -168,6 +212,11 @@ public class NoteAPI {
         return numNoteInCategory;
     }
 
+    /**
+     * It find all notes by a priority and send back number of notes by that priority.
+     * @param priority the priority parameter  the person is looking for
+     * @return The number of priority that was found.
+     */
     public int numberOfNotesByPriority(int priority)
     {
         int numNoteInPriority=0;
@@ -181,7 +230,11 @@ public class NoteAPI {
 
         return numNoteInPriority;
     }
-
+    /**
+     * This method returns the number of item objects stored in the ArrayList.
+     *
+     * @return An int value representing the number of items objects in the ArrayList.
+     */
 
     public int numberOfItems()
     {
@@ -191,6 +244,11 @@ public class NoteAPI {
         }
         return numOfItems;
     }
+
+    /**
+     * This method returns the number of completed items objects in the array list.
+     * @return An int value representing the number of completed items objects in the arraylist.
+     */
     public int numberOfCompleteItems()
     {
         int numOfItems = 0;
@@ -202,6 +260,10 @@ public class NoteAPI {
         return numOfItems;
     }
 
+    /**
+     * This method  returns the number of to do  items objects in the array list.
+     * @return An int value representing the number of to do items objects in the arraylist.
+     */
     public int numberOfTodoItems()
     {
         int numOfItems =0;
@@ -214,6 +276,13 @@ public class NoteAPI {
     }
 // LISTING METHODS
 
+    /**
+     * This method build and returns a String containing all notes in the arraylist.
+     * For each note stored in the arraylist , the index linked to the note is included.
+     * If no notes notes in the arraylist ,  the string that returned is "no notes stored"
+     *
+     * @return A string containing all the notes in the arrayList ot "no notes stored"
+     */
     public String listAllNotes() {
         if (notes.isEmpty() == true) {
             return "No Notes Stored";
@@ -232,12 +301,28 @@ public class NoteAPI {
 
 
     // display String
+
+    /**
+     * This is method that help with user experience it takes in a index and then will display.
+     * index of note ,note title, note priority , note archived , completion , and the items.
+     * It will make a string and make it look pretty.
+     * @param index this is index of the note
+     * @return It make a string of note & items info e.g.index of note ,note title, note priority , note archived , completion , and the items.
+     */
     public String displayString(int index)
     {
         Note note = notes.get(index);
         return index +": Note Title: " + note.getNoteTitle() +". Note Priority: "+ note.getNotePriority()+". Note Archived: "+ Utilities.booleanToYN(note.isNoteArchived()) + "\n"+ note.listItems()+ "\n";
     }
 
+    /**
+     * This is method that help with user experience it takes in a Note note  and then will display.
+     * index of note ,note title, note priority , note archived , completion , and the items.
+     * It will make a string and make it look pretty.
+     *
+     * @param note this is a type Note which is sent in.
+     * @return It make a string of note & items info e.g.index of note ,note title, note priority , note archived , completion , and the items.
+     */
     public String displayString(Note note)
     {
         int index =  notes.indexOf(note);
@@ -245,20 +330,13 @@ public class NoteAPI {
     }
 
 
+    /**
+     * This method build and return a String containing all the activate notes in the arrayList.
+     * for each product note stored, the associated index is also included
+     *
+     * @return A string containing all the activate notes in the arrayList or "no active notes store"
+     */
 
-    public String desginHelper(int option)
-    {
-        if(option ==1 )
-        {
-            return "_________________________________________________________________________________________________________________________________________________";
-        }
-
-        else
-        {
-            return "";
-        }
-
-    }
 
     public String listActiveNotes()
     {
@@ -285,11 +363,19 @@ public class NoteAPI {
         }
     }
 
+    /**
+     * This method build and return a String containing all the archived notes in the arrayList.
+     * for each product note stored, the associated index is also included
+     *
+     * @return A string containing all the archived notes in the arrayList or "no archived notes store"
+     */
+
+
     public String listArchivedNotes()
     {
-        if(notes.isEmpty())
+        if(numberOfArchivedNotes()==0)
         {
-            return"no archived notes";
+            return"\t \t no archived notes";
         }
         else {
             String listOfActNotes = "";
@@ -298,6 +384,7 @@ public class NoteAPI {
             {   Note note = notes.get(i);
                 if (note.isNoteArchived())
                 {
+                    //displayString() fail the test- why not used here
                 return listOfActNotes = listOfActNotes + i + ": Note Title: " + note.getNoteTitle() + ". Note Priority: " + note.getNotePriority() + ". Note Archived: " + Utilities.booleanToYN(note.isNoteArchived()) + "\n"  + note.listItems() + "\n";
                 }
             }
@@ -307,6 +394,15 @@ public class NoteAPI {
             return listOfActNotes;
         }
     }
+
+    /**
+     * This method build and return a String containing all the Notes By Selected Category in the arrayList.
+     * A String category is sent in.
+     * for each product note stored, the associated index is also included
+     *
+     * @param category this is String category looking for.
+     * @return A string containing all the Notes By Selected Category in the arrayList or "no notes stored " or "No notes with " +category"
+     */
 
     public String listNotesBySelectedCategory(String category)
     {
@@ -333,6 +429,15 @@ public class NoteAPI {
         }
 
     }
+
+    /**
+     * This method build and return a String containing all the Notes By Selected priority in the arrayList.
+     * A int priority is sent in.
+     * for each product note stored, the associated index is also included
+     *
+     * @param priority this is int priority looking for.
+     * @return A string containing all the Notes By Selected priority in the arrayList or "no notes stored " or "No notes with " + priority "
+     */
 
     public String listNotesBySelectedPriority(int priority)
     {
