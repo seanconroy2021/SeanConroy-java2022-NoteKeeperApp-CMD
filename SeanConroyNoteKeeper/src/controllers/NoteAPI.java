@@ -35,6 +35,8 @@ public class NoteAPI {
         return (index >= 0) && (index < notes.size());
     }
 
+
+
     /**
      * Add note object it is passed as a parameter to the arrayList.
      * @param note models.Note object to be added into the arrayList.

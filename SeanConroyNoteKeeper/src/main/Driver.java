@@ -381,7 +381,14 @@ public class Driver {
                 index = ScannerInput.readNextInt("Enter the index of note is valid try again ==> ");
             }
 
+            Note note = noteAPI.findNote(index);
+
             int itemIndex = ScannerInput.readNextInt("Enter the index of item like to change  ==> ");
+            while(note.isValidIndex(itemIndex) == false )
+            {
+                itemIndex = ScannerInput.readNextInt("Enter the index of item like to change (sorry try again)  ==> ");
+            }
+
             String itemDesc = ScannerInput.readNextLine("Enter the new Description for the item: ");
 
             char status = ScannerInput.readNextChar("Enter T for Todo & C for complete: ");
@@ -392,7 +399,7 @@ public class Driver {
             }
 
 
-            Note note = noteAPI.findNote(index);
+
             boolean test = note.updateItem(itemIndex, itemDesc,Utilities.ItemStatusConvert(status));
             Utilities.wasSuccessfulOutput(test);
 
@@ -414,8 +421,12 @@ public class Driver {
             }
 
             Note note = noteAPI.findNote(index);
-            int itemIndex = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
 
+            int itemIndex = ScannerInput.readNextInt("Enter the index of item to delete  ==> ");
+           while(note.isValidIndex(itemIndex) == false )
+           {
+               itemIndex = ScannerInput.readNextInt("Enter the index of item to delete (sorry try again)  ==> ");
+           }
 
             Item item = note.deleteItem(itemIndex);
             if (item == null) {
@@ -442,7 +453,13 @@ public class Driver {
                    index = ScannerInput.readNextInt("Enter the index of note of which like update completion status of  (try again) ==> ");
                }
 
+               Note note = noteAPI.findNote(index);
+
                int itemIndex = ScannerInput.readNextInt("Enter the index of item like to change  ==> ");
+               while(note.isValidIndex(itemIndex) == false )
+               {
+                   itemIndex = ScannerInput.readNextInt("Enter the index of item like to change  (sorry try again)  ==> ");
+               }
 
                char status = ScannerInput.readNextChar("Enter T for Todo & C for complete: ");
 
@@ -452,7 +469,6 @@ public class Driver {
                }
 
 
-               Note note = noteAPI.findNote(index);
                Item item = note.getItems().get(itemIndex);
                boolean test = note.updateItem(itemIndex, item.getItemDescription() ,Utilities.ItemStatusConvert(status));
                Utilities.wasSuccessfulOutput(test);
